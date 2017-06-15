@@ -6,10 +6,10 @@ int main()
      int count[10]={0,0,0,0,0,0,0,0,0};
      int a=0;
       int c;
-     fp = fopen("pi7.txt","r");
+     fp = fopen("pi7.txt","r");  // burada pi dosyalarını değiştirebilirsiniz. pi den başlayıp pi 7 ye kadar gider.
      if (fp == NULL) printf("Boyle bir dosya yok\n");
 	do {
-       c = getc(fp);    /* Bir karakter oku  */
+       c = getc(fp);    
        
 	     if(c=='0')
 	      count[0]++;    
@@ -35,7 +35,7 @@ int main()
 		
 	 } while (c!=EOF);
 	 for(int i=0;i<10;i++)
-	 printf( " count%d =%d \n",i,count[i]);
+	 printf( " count %d =%d \n",i,count[i]);
 	
 	
 	return 0;
