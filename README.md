@@ -87,6 +87,48 @@ k, `10^k` büyüklüğünde bir tabloyu bellekte tuttuğu için 7 ile sınırlı
 
 100.000.000 basamaklık `pi6.txt` üzerinde `freq`, `find` ve `kmer` komutlarının her biri 0.2–0.6 saniye içinde tamamlanıyor.
 
+## Raporlar (pi6.txt, 100.000.000 basamak)
+
+Dosyayı indirip kendiniz çalıştırmak istemiyorsanız diye `analyze.exe` ile üretilmiş gerçek sonuçlar aşağıda. Tüm komutlar 136 MB'lık `pi6.txt` üzerinde 0.2–0.6 saniyede tamamlandı.
+
+### Rakam frekansı (`freq`)
+
+Her rakam beklenen ~%10'a çok yakın; en büyük sapma %0.065 (rakam 5). Belirgin bir dengesizlik yok.
+
+| Rakam | Adet | Yüzde | Beklenenden sapma |
+|---|---|---|---|
+| 0 | 9.999.922 | 10.000% | −0.001% |
+| 1 | 10.002.475 | 10.002% | +0.025% |
+| 2 | 10.001.092 | 10.001% | +0.011% |
+| 3 | 9.998.442 | 9.998% | −0.016% |
+| 4 | 10.003.863 | 10.004% | +0.039% |
+| 5 | 9.993.478 | 9.993% | −0.065% |
+| 6 | 9.999.417 | 9.999% | −0.006% |
+| 7 | 9.999.610 | 10.000% | −0.004% |
+| 8 | 10.002.180 | 10.002% | +0.022% |
+| 9 | 9.999.521 | 10.000% | −0.005% |
+
+### Belirli örüntü aramaları (`find`)
+
+| Örüntü | Sonuç | Not |
+|---|---|---|
+| `0123456789` (ve tersi `9876543210`) | **0 kez** | ilk 100 milyon basamakta hiç geçmiyor |
+| `123456789` (ve tersi `987654321`) | **0 kez** | bu da hiç geçmiyor |
+| `14159` (ve tersi `95141`) | 979 / 1010 kez | beklenen ~1000, ilk konum 0 (pi'nin başındaki basamaklar) |
+| `999999` | **107 kez**, ilk konum **761** | ünlü ["Feynman noktası"](https://en.wikipedia.org/wiki/Feynman_point) — pi'nin ilk 762. basamağından itibaren art arda 6 tane 9 gelir, bilinen bir matematik ilginçliği, buradan da doğrulandı |
+
+### Tüm k-haneli örüntülerin taraması (`kmer`)
+
+3, 4 ve 6 haneli tüm örüntüler tek tek tarandı; hiçbir uzunlukta **hiç görülmeyen örüntü yok** (0/1.000, 0/10.000, 0/1.000.000) — yani her kombinasyon en az bir kez geçmiş. Sapmalar örneklem büyüklüğüne göre istatistiksel olarak beklenen aralıkta, kalıcı bir "sıcak" ya da "soğuk" örüntü yok.
+
+| k | Farklı örüntü | En sık | En az |
+|---|---|---|---|
+| 3 | 1.000 | `941` → 100.917 kez (+0.92%) | `478` → 99.006 kez (−0.99%) |
+| 4 | 10.000 | `7017` → 10.416 kez (+4.16%) | `2280` → 9.618 kez (−3.82%) |
+| 6 | 1.000.000 | `116972` → 154 kez (+54.00%) | `653189` → 56 kez (−44.00%) |
+
+**Sonuç:** İlk 100 milyon basamakta pi'nin rakamları, beklenen istatistiksel rastgeleliğin dışına çıkan bir örüntü göstermiyor — dağılım "normal sayı" (normal number) varsayımıyla tutarlı.
+
 ## Lisans
 
 [LICENSE](LICENSE) dosyasına bakınız.
