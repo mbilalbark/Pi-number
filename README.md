@@ -19,11 +19,11 @@ Pi sayısının ondalık basamakları üzerinde çalışan küçük bir C projes
 
 ### [pi.c](pi.c)
 
-İlk, basit versiyon. `pi1.txt`–`pi5.txt` formatındaki bir dosyada rakam frekansı sayar.
+İlk, basit versiyon. `pi1.txt`–`pi5.txt` formatındaki (düz rakam dökümü) bir dosyada rakam frekansı sayar; `pi6.txt` gibi konum sayaçlı dosyalarda kullanılmamalıdır (bunlar için `analyze.c`'yi kullanın).
 
 ```powershell
-gcc -o pi pi.c
-./pi
+gcc -o pi.exe pi.c
+.\pi.exe pi1.txt
 ```
 
 ### [analyze.c](analyze.c)
