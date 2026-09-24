@@ -1,0 +1,8 @@
+*.exe
+*.o
+*.obj
+*.bin
+
+# 100MB+ kaynak dosyasi, GitHub dosya boyutu sinirini asiyor.
+# https://archive.org/details/Pi_to_100000000_places adresinden indirilebilir.
+pi6.txt
